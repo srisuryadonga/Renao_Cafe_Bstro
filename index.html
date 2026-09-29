@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="noir">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,9 +34,50 @@
       </nav>
 
       <div class="nav-actions">
+        <!-- Dynamic Theme Switcher Dropdown -->
+        <div class="theme-picker-wrap" id="theme-picker-wrap">
+          <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Select theme" aria-expanded="false" title="Switch Theme Aesthetic">
+            <span class="theme-swatch" id="active-theme-swatch"></span>
+            <span id="active-theme-label">Amber Noir</span>
+            <i class="fa-solid fa-chevron-down theme-chevron"></i>
+          </button>
+          
+          <div class="theme-dropdown" id="theme-dropdown">
+            <button class="theme-option-btn active" data-theme-val="noir">
+              <span class="theme-color-dot noir"></span>
+              <div class="theme-text-group">
+                <span class="theme-name">Amber Noir</span>
+                <span class="theme-desc">Iconic dark gold glow</span>
+              </div>
+            </button>
+            <button class="theme-option-btn" data-theme-val="alabaster">
+              <span class="theme-color-dot alabaster"></span>
+              <div class="theme-text-group">
+                <span class="theme-name">Warm Alabaster</span>
+                <span class="theme-desc">Parisian daylight bistro</span>
+              </div>
+            </button>
+            <button class="theme-option-btn" data-theme-val="emerald">
+              <span class="theme-color-dot emerald"></span>
+              <div class="theme-text-group">
+                <span class="theme-name">Emerald Noir</span>
+                <span class="theme-desc">Botanical & champagne gold</span>
+              </div>
+            </button>
+            <button class="theme-option-btn" data-theme-val="burgundy">
+              <span class="theme-color-dot burgundy"></span>
+              <div class="theme-text-group">
+                <span class="theme-name">Velvet Burgundy</span>
+                <span class="theme-desc">Romantic rose gold lounge</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
         <a href="tel:09908999643" class="btn-call">
           CALL
         </a>
+
         <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
           <i class="fa-solid fa-bars"></i>
         </button>
@@ -48,6 +89,11 @@
   <section class="hero" id="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
+      <div class="hero-status-pill">
+        <span class="live-pulse"></span>
+        <span>OPEN NOW · 7:00 AM — 1:00 AM DAILY</span>
+      </div>
+
       <div class="hero-tagline">CAFÉ &nbsp;·&nbsp; BISTRO &nbsp;·&nbsp; MADHAPUR</div>
       <h1 class="hero-title">
         Slow mornings.<br>
@@ -57,8 +103,11 @@
         An intimate corner of Silicon Valley, Madhapur — where wood-fired plates, warm light and good music make the hours disappear.
       </p>
       <div class="hero-buttons">
-        <a href="#reserve" class="btn-primary">RESERVE A TABLE</a>
-        <a href="#menu-signatures" class="btn-secondary">SEE THE MENU</a>
+        <button class="btn-primary" id="hero-reserve-btn">
+          <i class="fa-regular fa-calendar-check"></i>
+          RESERVE A TABLE
+        </button>
+        <a href="#menu-categorized" class="btn-secondary">EXPLORE MENU & ORDER</a>
       </div>
     </div>
   </section>
@@ -104,103 +153,228 @@
     <div class="container">
       <div class="section-header">
         <div class="header-left">
-          <span class="micro-label">MENU</span>
+          <span class="micro-label">SIGNATURES</span>
           <h2 class="section-title">What the regulars<br>come back for.</h2>
         </div>
         <div class="header-right">
           <p class="section-subtitle">
-            A curated menu spanning Asian small plates, wood-fired pizzas, hand-rolled pastas and slow Sunday breakfasts. ₹400–1,400 per person.
+            A curated menu spanning Asian small plates, wood-fired pizzas, hand-rolled pastas and slow Sunday breakfasts. Tap any dish to add to your table tray.
           </p>
         </div>
       </div>
 
       <div class="signature-grid">
-        <!-- Item 1 -->
-        <div class="signature-card">
+        <!-- Item 1: Hot Chocolate -->
+        <div class="signature-card" data-dish-id="sig-hot-chocolate" data-name="Hot Chocolate" data-price="295" data-diet="veg" data-category="desserts">
           <div class="card-image-wrap">
+            <span class="card-diet-badge"><span class="diet-dot veg"></span> VEG</span>
             <img src="https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=800&q=80" alt="Hot Chocolate" loading="lazy">
           </div>
           <div class="card-details">
-            <h3 class="card-title">Hot Chocolate</h3>
+            <div class="card-header-row">
+              <h3 class="card-title">Hot Chocolate</h3>
+              <span class="card-price">₹295</span>
+            </div>
+            <p class="card-desc">70% single-origin Belgian dark chocolate ganache, steamed milk & toasted marshmallow.</p>
+            <div class="card-action-row">
+              <button class="btn-add-tray" data-add-id="sig-hot-chocolate" data-name="Hot Chocolate" data-price="295" data-diet="veg">
+                <i class="fa-solid fa-plus"></i> ADD TO TRAY
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Item 2 -->
-        <div class="signature-card">
+        <!-- Item 2: English Breakfast -->
+        <div class="signature-card" data-dish-id="sig-english-breakfast" data-name="English Breakfast" data-price="445" data-diet="nonveg" data-category="specials">
           <div class="card-image-wrap">
+            <span class="card-diet-badge"><span class="diet-dot nonveg"></span> NON-VEG</span>
             <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=800&q=80" alt="English Breakfast" loading="lazy">
           </div>
           <div class="card-details">
-            <h3 class="card-title">English Breakfast</h3>
+            <div class="card-header-row">
+              <h3 class="card-title">English Breakfast</h3>
+              <span class="card-price">₹445</span>
+            </div>
+            <p class="card-desc">Sunny-side eggs, chicken sausages, buttered sourdough, baked beans & blistered tomatoes.</p>
+            <div class="card-action-row">
+              <button class="btn-add-tray" data-add-id="sig-english-breakfast" data-name="English Breakfast" data-price="445" data-diet="nonveg">
+                <i class="fa-solid fa-plus"></i> ADD TO TRAY
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Item 3 -->
-        <div class="signature-card">
+        <!-- Item 3: Korean Chicken Wings -->
+        <div class="signature-card" data-dish-id="sig-korean-wings" data-name="Korean Chicken Wings" data-price="425" data-diet="nonveg" data-category="starters">
           <div class="card-image-wrap">
+            <span class="card-diet-badge"><span class="diet-dot nonveg"></span> NON-VEG</span>
             <img src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=800&q=80" alt="Korean Chicken Wings" loading="lazy">
           </div>
           <div class="card-details">
-            <h3 class="card-title">Korean Chicken Wings</h3>
+            <div class="card-header-row">
+              <h3 class="card-title">Korean Chicken Wings</h3>
+              <span class="card-price">₹425</span>
+            </div>
+            <p class="card-desc">Crispy double-fried wings tossed in sticky sweet gochujang glaze and roasted sesame.</p>
+            <div class="card-action-row">
+              <button class="btn-add-tray" data-add-id="sig-korean-wings" data-name="Korean Chicken Wings" data-price="425" data-diet="nonveg">
+                <i class="fa-solid fa-plus"></i> ADD TO TRAY
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Item 4 -->
-        <div class="signature-card">
+        <!-- Item 4: Cappuccino -->
+        <div class="signature-card" data-dish-id="sig-cappuccino" data-name="Cappuccino" data-price="225" data-diet="veg" data-category="beverages">
           <div class="card-image-wrap">
+            <span class="card-diet-badge"><span class="diet-dot veg"></span> VEG</span>
             <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=800&q=80" alt="Cappuccino" loading="lazy">
           </div>
           <div class="card-details">
-            <h3 class="card-title">Cappuccino</h3>
+            <div class="card-header-row">
+              <h3 class="card-title">Cappuccino</h3>
+              <span class="card-price">₹225</span>
+            </div>
+            <p class="card-desc">Double-shot artisanal roast espresso with textured velvety microfoam and cocoa dust.</p>
+            <div class="card-action-row">
+              <button class="btn-add-tray" data-add-id="sig-cappuccino" data-name="Cappuccino" data-price="225" data-diet="veg">
+                <i class="fa-solid fa-plus"></i> ADD TO TRAY
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Item 5 -->
-        <div class="signature-card">
+        <!-- Item 5: Chicken Satay -->
+        <div class="signature-card" data-dish-id="sig-chicken-satay" data-name="Chicken Satay" data-price="415" data-diet="nonveg" data-category="starters">
           <div class="card-image-wrap">
+            <span class="card-diet-badge"><span class="diet-dot nonveg"></span> NON-VEG</span>
             <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=800&q=80" alt="Chicken Satay" loading="lazy">
           </div>
           <div class="card-details">
-            <h3 class="card-title">Chicken Satay</h3>
+            <div class="card-header-row">
+              <h3 class="card-title">Chicken Satay</h3>
+              <span class="card-price">₹415</span>
+            </div>
+            <p class="card-desc">Charcoal-grilled skewers served with crushed peanut dip and fresh cucumber relish.</p>
+            <div class="card-action-row">
+              <button class="btn-add-tray" data-add-id="sig-chicken-satay" data-name="Chicken Satay" data-price="415" data-diet="nonveg">
+                <i class="fa-solid fa-plus"></i> ADD TO TRAY
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Item 6 -->
-        <div class="signature-card">
+        <!-- Item 6: Garlic Bread Cheese -->
+        <div class="signature-card" data-dish-id="sig-garlic-bread-cheese" data-name="Garlic Bread Cheese" data-price="315" data-diet="veg" data-category="starters">
           <div class="card-image-wrap">
+            <span class="card-diet-badge"><span class="diet-dot veg"></span> VEG</span>
             <img src="https://images.unsplash.com/photo-1619860860774-1e2e17343432?auto=format&fit=crop&w=800&q=80" alt="Garlic Bread Cheese" loading="lazy">
           </div>
           <div class="card-details">
-            <h3 class="card-title">Garlic Bread Cheese</h3>
+            <div class="card-header-row">
+              <h3 class="card-title">Garlic Bread Cheese</h3>
+              <span class="card-price">₹315</span>
+            </div>
+            <p class="card-desc">Freshly baked artisan baguette loaded with bubbling mozzarella & roasted garlic butter.</p>
+            <div class="card-action-row">
+              <button class="btn-add-tray" data-add-id="sig-garlic-bread-cheese" data-name="Garlic Bread Cheese" data-price="315" data-diet="veg">
+                <i class="fa-solid fa-plus"></i> ADD TO TRAY
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Item 7 -->
-        <div class="signature-card">
+        <!-- Item 7: Ghost Mutton Biryani -->
+        <div class="signature-card" data-dish-id="sig-ghost-mutton-biryani" data-name="Ghost Mutton Biryani" data-price="545" data-diet="nonveg" data-category="specials">
           <div class="card-image-wrap">
+            <span class="card-diet-badge"><span class="diet-dot nonveg"></span> NON-VEG</span>
             <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80" alt="Ghost Mutton Biryani" loading="lazy">
           </div>
           <div class="card-details">
-            <h3 class="card-title">Ghost Mutton Biryani</h3>
+            <div class="card-header-row">
+              <h3 class="card-title">Ghost Mutton Biryani</h3>
+              <span class="card-price">₹545</span>
+            </div>
+            <p class="card-desc">Authentic Hyderabadi dum cooked tender mutton with aged seeraga samba & saffron ghee.</p>
+            <div class="card-action-row">
+              <button class="btn-add-tray" data-add-id="sig-ghost-mutton-biryani" data-name="Ghost Mutton Biryani" data-price="545" data-diet="nonveg">
+                <i class="fa-solid fa-plus"></i> ADD TO TRAY
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Item 8 -->
-        <div class="signature-card">
+        <!-- Item 8: Laksa -->
+        <div class="signature-card" data-dish-id="sig-laksa" data-name="Laksa" data-price="255" data-diet="nonveg" data-category="soups">
           <div class="card-image-wrap">
+            <span class="card-diet-badge"><span class="diet-dot nonveg"></span> NON-VEG</span>
             <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Laksa" loading="lazy">
           </div>
           <div class="card-details">
-            <h3 class="card-title">Laksa</h3>
+            <div class="card-header-row">
+              <h3 class="card-title">Laksa</h3>
+              <span class="card-price">₹255</span>
+            </div>
+            <p class="card-desc">Rich coconut curry noodle soup with aromatic lemongrass, tofu puffs & boiled egg.</p>
+            <div class="card-action-row">
+              <button class="btn-add-tray" data-add-id="sig-laksa" data-name="Laksa" data-price="255" data-diet="nonveg">
+                <i class="fa-solid fa-plus"></i> ADD TO TRAY
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Categorized Menu Section (Pixel-Perfect to Prompt Screenshots) -->
+  <!-- Categorized Menu Section with Live Search & Dietary Filters -->
   <section class="categorized-menu-section" id="menu-categorized">
     <div class="container">
+
+      <!-- Section Header -->
+      <div class="section-header" style="margin-bottom: 2rem;">
+        <div class="header-left">
+          <span class="micro-label">CURATED DINING</span>
+          <h2 class="section-title">The Complete Menu.</h2>
+        </div>
+        <div class="header-right">
+          <p class="section-subtitle">
+            Order directly for your table. Filter by dietary choices or search for your favorite plates.
+          </p>
+        </div>
+      </div>
+
+      <!-- Live Search & Filter Bar -->
+      <div class="menu-control-bar">
+        <div class="search-and-sort-row">
+          <div class="menu-search-wrap">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="menu-search-input" class="menu-search-input" placeholder="Search dishes, coffee, ingredients (e.g. Dosa, Wings, Truffle, Idli)...">
+            <button class="search-clear-btn" id="search-clear-btn" aria-label="Clear search">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <div class="menu-sort-wrap">
+            <select id="menu-sort-select" class="sort-select" aria-label="Sort dishes">
+              <option value="default">Sort: Recommended</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="dietary-filters-row">
+          <div class="diet-pills-list">
+            <button class="diet-pill active" data-diet-filter="all">All Dishes</button>
+            <button class="diet-pill" data-diet-filter="veg"><span class="diet-dot veg"></span> Pure Veg</button>
+            <button class="diet-pill" data-diet-filter="nonveg"><span class="diet-dot nonveg"></span> Non-Veg</button>
+            <button class="diet-pill" data-diet-filter="special"><i class="fa-solid fa-star"></i> Chef's Specials</button>
+            <button class="diet-pill" data-diet-filter="desserts"><i class="fa-solid fa-cake-candles"></i> Desserts & Sips</button>
+          </div>
+          <div class="menu-results-count" id="menu-results-count">Showing 23 dishes</div>
+        </div>
+      </div>
 
       <!-- Category Tabs Nav -->
       <div class="menu-tabs">
@@ -213,35 +387,120 @@
       </div>
 
       <!-- Menu Grid Layout -->
-      <div class="menu-columns-container">
+      <div class="menu-columns-container" id="menu-columns-container">
         
         <!-- Category Block: Soups -->
         <div class="menu-category-block" data-category="soups">
           <h3 class="category-heading">Soups</h3>
           <div class="menu-items-list">
-            <div class="menu-item-row">
-              <span class="item-name">Laksa</span>
-              <span class="item-price">₹255</span>
+            <div class="menu-item-row" data-dish-id="soup-laksa" data-name="Laksa" data-price="255" data-diet="nonveg" data-special="true" data-category="soups">
+              <div class="item-left">
+                <div class="diet-indicator-icon nonveg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Laksa</span>
+                    <span class="badge-tag-special">Bistro Pick</span>
+                  </div>
+                  <span class="item-subtext">Malaysian coconut curry noodle soup with aromatic herbs & tofu</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹255</span>
+                <button class="btn-add-tray" data-add-id="soup-laksa" data-name="Laksa" data-price="255" data-diet="nonveg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Manchow</span>
-              <span class="item-price">₹255</span>
+
+            <div class="menu-item-row" data-dish-id="soup-manchow" data-name="Manchow" data-price="255" data-diet="veg" data-special="false" data-category="soups">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Manchow</span>
+                  </div>
+                  <span class="item-subtext">Spicy Indo-Chinese dark garlic broth topped with crispy noodles</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹255</span>
+                <button class="btn-add-tray" data-add-id="soup-manchow" data-name="Manchow" data-price="255" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Roasted Pumpkin Soup</span>
-              <span class="item-price">₹255</span>
+
+            <div class="menu-item-row" data-dish-id="soup-pumpkin" data-name="Roasted Pumpkin Soup" data-price="255" data-diet="veg" data-special="false" data-category="soups">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Roasted Pumpkin Soup</span>
+                  </div>
+                  <span class="item-subtext">Slow-charred pumpkin velouté with cinnamon crema & toasted pepitas</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹255</span>
+                <button class="btn-add-tray" data-add-id="soup-pumpkin" data-name="Roasted Pumpkin Soup" data-price="255" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Tomato Dhaniya Shorba</span>
-              <span class="item-price">₹255</span>
+
+            <div class="menu-item-row" data-dish-id="soup-shorba" data-name="Tomato Dhaniya Shorba" data-price="255" data-diet="veg" data-special="false" data-category="soups">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Tomato Dhaniya Shorba</span>
+                  </div>
+                  <span class="item-subtext">Slow-simmered spiced plum tomato & fresh mountain coriander broth</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹255</span>
+                <button class="btn-add-tray" data-add-id="soup-shorba" data-name="Tomato Dhaniya Shorba" data-price="255" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Cream of Chicken</span>
-              <span class="item-price">₹285</span>
+
+            <div class="menu-item-row" data-dish-id="soup-cream-chicken" data-name="Cream of Chicken" data-price="285" data-diet="nonveg" data-special="false" data-category="soups">
+              <div class="item-left">
+                <div class="diet-indicator-icon nonveg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Cream of Chicken</span>
+                  </div>
+                  <span class="item-subtext">Classic French velvety chicken soup with garden thyme and brioche croutons</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹285</span>
+                <button class="btn-add-tray" data-add-id="soup-cream-chicken" data-name="Cream of Chicken" data-price="285" data-diet="nonveg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Marag (Mutton)</span>
-              <span class="item-price">₹325</span>
+
+            <div class="menu-item-row" data-dish-id="soup-marag" data-name="Marag (Mutton)" data-price="325" data-diet="nonveg" data-special="true" data-category="soups">
+              <div class="item-left">
+                <div class="diet-indicator-icon nonveg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Marag (Mutton)</span>
+                    <span class="badge-tag-special">Hyderabad Classic</span>
+                  </div>
+                  <span class="item-subtext">Rich Hyderabadi bone-in mutton broth finished with black pepper & almond paste</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹325</span>
+                <button class="btn-add-tray" data-add-id="soup-marag" data-name="Marag (Mutton)" data-price="325" data-diet="nonveg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -250,25 +509,94 @@
         <div class="menu-category-block" data-category="soups">
           <h3 class="category-heading">Salad</h3>
           <div class="menu-items-list">
-            <div class="menu-item-row">
-              <span class="item-name">Watermelon Feta</span>
-              <span class="item-price">₹365</span>
+            <div class="menu-item-row" data-dish-id="salad-watermelon" data-name="Watermelon Feta" data-price="365" data-diet="veg" data-special="false" data-category="soups">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Watermelon Feta</span>
+                  </div>
+                  <span class="item-subtext">Chilled watermelon discs, crumbled barrel-aged feta, garden mint & balsamic glaze</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹365</span>
+                <button class="btn-add-tray" data-add-id="salad-watermelon" data-name="Watermelon Feta" data-price="365" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Caesar Salad</span>
-              <span class="item-price">₹365</span>
+
+            <div class="menu-item-row" data-dish-id="salad-caesar" data-name="Caesar Salad" data-price="365" data-diet="veg" data-special="false" data-category="soups">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Caesar Salad</span>
+                  </div>
+                  <span class="item-subtext">Crisp romaine hearts, sourdough croutons, shaved parmesan & house Caesar dressing</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹365</span>
+                <button class="btn-add-tray" data-add-id="salad-caesar" data-name="Caesar Salad" data-price="365" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Mediterranean Greek</span>
-              <span class="item-price">₹365</span>
+
+            <div class="menu-item-row" data-dish-id="salad-greek" data-name="Mediterranean Greek" data-price="365" data-diet="veg" data-special="false" data-category="soups">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Mediterranean Greek</span>
+                  </div>
+                  <span class="item-subtext">Kalamata olives, heirloom cherry tomatoes, English cucumbers & oregano vinaigrette</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹365</span>
+                <button class="btn-add-tray" data-add-id="salad-greek" data-name="Mediterranean Greek" data-price="365" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Mediterranean Quinoa</span>
-              <span class="item-price">₹365</span>
+
+            <div class="menu-item-row" data-dish-id="salad-quinoa" data-name="Mediterranean Quinoa" data-price="365" data-diet="veg" data-special="false" data-category="soups">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Mediterranean Quinoa</span>
+                  </div>
+                  <span class="item-subtext">Tri-color quinoa, baby arugula, sun-dried tomatoes & citrus lemon emulsion</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹365</span>
+                <button class="btn-add-tray" data-add-id="salad-quinoa" data-name="Mediterranean Quinoa" data-price="365" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Chicken (Add on)</span>
-              <span class="item-price">₹75</span>
+
+            <div class="menu-item-row" data-dish-id="salad-chicken-addon" data-name="Chicken (Add on)" data-price="75" data-diet="nonveg" data-special="false" data-category="soups">
+              <div class="item-left">
+                <div class="diet-indicator-icon nonveg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Chicken (Add on)</span>
+                  </div>
+                  <span class="item-subtext">Herb-marinated grilled chicken breast slices for your salad</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹75</span>
+                <button class="btn-add-tray" data-add-id="salad-chicken-addon" data-name="Chicken (Add on)" data-price="75" data-diet="nonveg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -277,17 +605,78 @@
         <div class="menu-category-block" data-category="starters">
           <h3 class="category-heading">Conversation Starters</h3>
           <div class="menu-items-list">
-            <div class="menu-item-row">
-              <span class="item-name">Garlic Bread — Classic</span>
-              <span class="item-price">₹265</span>
+            <div class="menu-item-row" data-dish-id="starter-gb-classic" data-name="Garlic Bread — Classic" data-price="265" data-diet="veg" data-special="false" data-category="starters">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Garlic Bread — Classic</span>
+                  </div>
+                  <span class="item-subtext">Toasted artisan sourdough baguette with compound garlic herb butter</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹265</span>
+                <button class="btn-add-tray" data-add-id="starter-gb-classic" data-name="Garlic Bread — Classic" data-price="265" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Garlic Bread Cheese Chilli</span>
-              <span class="item-price">₹315</span>
+
+            <div class="menu-item-row" data-dish-id="starter-gb-chilli" data-name="Garlic Bread Cheese Chilli" data-price="315" data-diet="veg" data-special="true" data-category="starters">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Garlic Bread Cheese Chilli</span>
+                    <span class="badge-tag-special">Popular</span>
+                  </div>
+                  <span class="item-subtext">Topped with bubbling mozzarella, sharp cheddar and fresh bird's eye chillies</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹315</span>
+                <button class="btn-add-tray" data-add-id="starter-gb-chilli" data-name="Garlic Bread Cheese Chilli" data-price="315" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Fries — Classic</span>
-              <span class="item-price">₹265</span>
+
+            <div class="menu-item-row" data-dish-id="starter-fries" data-name="Fries — Classic" data-price="265" data-diet="veg" data-special="false" data-category="starters">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Fries — Classic</span>
+                  </div>
+                  <span class="item-subtext">Crisp skin-on golden potato fries served with smoked paprika aioli</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹265</span>
+                <button class="btn-add-tray" data-add-id="starter-fries" data-name="Fries — Classic" data-price="265" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
+            </div>
+
+            <div class="menu-item-row" data-dish-id="starter-truffle-fries" data-name="Truffle Parmesan Fries" data-price="345" data-diet="veg" data-special="true" data-category="starters">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Truffle Parmesan Fries</span>
+                    <span class="badge-tag-special">Signature</span>
+                  </div>
+                  <span class="item-subtext">White truffle oil mist, aged parmesan snow and freshly cracked black pepper</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹345</span>
+                <button class="btn-add-tray" data-add-id="starter-truffle-fries" data-name="Truffle Parmesan Fries" data-price="345" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -296,17 +685,78 @@
         <div class="menu-category-block" data-category="specials">
           <h3 class="category-heading">Specials — <span class="italic-heading">Please take my breath away</span></h3>
           <div class="menu-items-list">
-            <div class="menu-item-row">
-              <span class="item-name">Lotus Stem</span>
-              <span class="item-price">₹435</span>
+            <div class="menu-item-row" data-dish-id="special-lotus-stem" data-name="Lotus Stem" data-price="435" data-diet="veg" data-special="true" data-category="specials">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Lotus Stem</span>
+                    <span class="badge-tag-special">Chef's Signature</span>
+                  </div>
+                  <span class="item-subtext">Wok-crisped honey-chilli glazed lotus stem crisps with toasted white sesame</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹435</span>
+                <button class="btn-add-tray" data-add-id="special-lotus-stem" data-name="Lotus Stem" data-price="435" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Babycorn Chilli Roasted</span>
-              <span class="item-price">₹435</span>
+
+            <div class="menu-item-row" data-dish-id="special-babycorn" data-name="Babycorn Chilli Roasted" data-price="435" data-diet="veg" data-special="false" data-category="specials">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Babycorn Chilli Roasted</span>
+                  </div>
+                  <span class="item-subtext">Tender young corn roasted in dry spicy red pepper reduction & spring onions</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹435</span>
+                <button class="btn-add-tray" data-add-id="special-babycorn" data-name="Babycorn Chilli Roasted" data-price="435" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Malai Broccoli</span>
-              <span class="item-price">₹435</span>
+
+            <div class="menu-item-row" data-dish-id="special-malai-broccoli" data-name="Malai Broccoli" data-price="435" data-diet="veg" data-special="true" data-category="specials">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Malai Broccoli</span>
+                  </div>
+                  <span class="item-subtext">Char-grilled broccoli florets marinated in green cardamom, cashew crema & cheese</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹435</span>
+                <button class="btn-add-tray" data-add-id="special-malai-broccoli" data-name="Malai Broccoli" data-price="435" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
+            </div>
+
+            <div class="menu-item-row" data-dish-id="special-smoked-chicken" data-name="Wood-fired Smoked Chicken" data-price="485" data-diet="nonveg" data-special="true" data-category="specials">
+              <div class="item-left">
+                <div class="diet-indicator-icon nonveg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Wood-fired Smoked Chicken</span>
+                    <span class="badge-tag-special">Wood-fired</span>
+                  </div>
+                  <span class="item-subtext">Applewood-smoked chicken supreme served with roasted baby potatoes & pan jus</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹485</span>
+                <button class="btn-add-tray" data-add-id="special-smoked-chicken" data-name="Wood-fired Smoked Chicken" data-price="485" data-diet="nonveg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -315,21 +765,77 @@
         <div class="menu-category-block" data-category="south-indian">
           <h3 class="category-heading">South Indian</h3>
           <div class="menu-items-list">
-            <div class="menu-item-row">
-              <span class="item-name">Ghee Roast Podi Dosa</span>
-              <span class="item-price">₹225</span>
+            <div class="menu-item-row" data-dish-id="south-podi-dosa" data-name="Ghee Roast Podi Dosa" data-price="225" data-diet="veg" data-special="true" data-category="south-indian">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Ghee Roast Podi Dosa</span>
+                    <span class="badge-tag-special">Best Seller</span>
+                  </div>
+                  <span class="item-subtext">Crisp golden crepe roasted in aromatic pure desi ghee & spicy Gunpowder podi</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹225</span>
+                <button class="btn-add-tray" data-add-id="south-podi-dosa" data-name="Ghee Roast Podi Dosa" data-price="225" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Cheese Butter Masala Dosa</span>
-              <span class="item-price">₹265</span>
+
+            <div class="menu-item-row" data-dish-id="south-cheese-dosa" data-name="Cheese Butter Masala Dosa" data-price="265" data-diet="veg" data-special="false" data-category="south-indian">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Cheese Butter Masala Dosa</span>
+                  </div>
+                  <span class="item-subtext">Spiced potato filling enveloped in melted cheddar and amul butter</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹265</span>
+                <button class="btn-add-tray" data-add-id="south-cheese-dosa" data-name="Cheese Butter Masala Dosa" data-price="265" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Steamed Button Idli in Sambar</span>
-              <span class="item-price">₹195</span>
+
+            <div class="menu-item-row" data-dish-id="south-button-idli" data-name="Steamed Button Idli in Sambar" data-price="195" data-diet="veg" data-special="false" data-category="south-indian">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Steamed Button Idli in Sambar</span>
+                  </div>
+                  <span class="item-subtext">Bite-sized pillow-soft idlis submerged in piping hot spiced Madras sambar</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹195</span>
+                <button class="btn-add-tray" data-add-id="south-button-idli" data-name="Steamed Button Idli in Sambar" data-price="195" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Open Butter Masala Idli</span>
-              <span class="item-price">₹215</span>
+
+            <div class="menu-item-row" data-dish-id="south-butter-idli" data-name="Open Butter Masala Idli" data-price="215" data-diet="veg" data-special="false" data-category="south-indian">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Open Butter Masala Idli</span>
+                  </div>
+                  <span class="item-subtext">Fluffy steamed idlis crowned with roasted spice mix and hot melted butter</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹215</span>
+                <button class="btn-add-tray" data-add-id="south-butter-idli" data-name="Open Butter Masala Idli" data-price="215" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -338,23 +844,88 @@
         <div class="menu-category-block" data-category="desserts">
           <h3 class="category-heading">The Sweet Talks</h3>
           <div class="menu-items-list">
-            <div class="menu-item-row">
-              <span class="item-name">Hazelnut Chocolate Mousse</span>
-              <span class="item-price">₹345</span>
+            <div class="menu-item-row" data-dish-id="dessert-mousse" data-name="Hazelnut Chocolate Mousse" data-price="345" data-diet="veg" data-special="true" data-category="desserts">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Hazelnut Chocolate Mousse</span>
+                    <span class="badge-tag-special">Guest Favorite</span>
+                  </div>
+                  <span class="item-subtext">Silky Belgian dark chocolate mousse layered with roasted Piedmont hazelnut praline</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹345</span>
+                <button class="btn-add-tray" data-add-id="dessert-mousse" data-name="Hazelnut Chocolate Mousse" data-price="345" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Warm Basque Cheesecake</span>
-              <span class="item-price">₹385</span>
+
+            <div class="menu-item-row" data-dish-id="dessert-cheesecake" data-name="Warm Basque Cheesecake" data-price="385" data-diet="veg" data-special="true" data-category="desserts">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Warm Basque Cheesecake</span>
+                    <span class="badge-tag-special">Signature</span>
+                  </div>
+                  <span class="item-subtext">Caramelized dark burnished crust with a gooey, molten molten cream cheese heart</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹385</span>
+                <button class="btn-add-tray" data-add-id="dessert-cheesecake" data-name="Warm Basque Cheesecake" data-price="385" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Tiramisu Tres Leches</span>
-              <span class="item-price">₹395</span>
+
+            <div class="menu-item-row" data-dish-id="dessert-tiramisu" data-name="Tiramisu Tres Leches" data-price="395" data-diet="veg" data-special="false" data-category="desserts">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Tiramisu Tres Leches</span>
+                  </div>
+                  <span class="item-subtext">Espresso-soaked sponge cake drenched in three-milk vanilla cream & cocoa dust</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹395</span>
+                <button class="btn-add-tray" data-add-id="dessert-tiramisu" data-name="Tiramisu Tres Leches" data-price="395" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
-            <div class="menu-item-row">
-              <span class="item-name">Artisanal Hot Chocolate Float</span>
-              <span class="item-price">₹325</span>
+
+            <div class="menu-item-row" data-dish-id="dessert-float" data-name="Artisanal Hot Chocolate Float" data-price="325" data-diet="veg" data-special="false" data-category="desserts">
+              <div class="item-left">
+                <div class="diet-indicator-icon veg"><span class="inner-circle"></span></div>
+                <div class="item-text-wrap">
+                  <div class="item-name-group">
+                    <span class="item-name">Artisanal Hot Chocolate Float</span>
+                  </div>
+                  <span class="item-subtext">Signature thick melted chocolate paired with Madagascar vanilla bean gelato scoop</span>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="item-price">₹325</span>
+                <button class="btn-add-tray" data-add-id="dessert-float" data-name="Artisanal Hot Chocolate Float" data-price="325" data-diet="veg">
+                  <i class="fa-solid fa-plus"></i> ADD
+                </button>
+              </div>
             </div>
           </div>
+        </div>
+
+        <!-- Empty Search State -->
+        <div class="menu-empty-state" id="menu-empty-state">
+          <div class="empty-state-icon"><i class="fa-solid fa-utensils"></i></div>
+          <h4 class="empty-state-title">No dishes match your search</h4>
+          <p class="empty-state-sub">Try searching for other ingredients or reset your dietary filters.</p>
+          <button class="btn-secondary" id="reset-filters-btn">Reset Filters</button>
         </div>
 
       </div>
@@ -368,9 +939,8 @@
       <!-- Left Photo Container -->
       <div class="ambience-photo-wrap">
         <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80" alt="Rénao Dark Filament Ambience" loading="lazy">
-        <div class="ambience-overlay"></div>
         <div class="live-reporting-badge">
-          <span class="badge-text">1,346 PEOPLE REPORTING</span>
+          <span class="badge-text">1,346 PEOPLE VISITING THIS WEEK</span>
         </div>
       </div>
 
@@ -426,29 +996,29 @@
     <div class="container text-center">
       <span class="micro-label">TABLE RESERVATION</span>
       <h2 class="reserve-main-heading">Book your evening at Rénao</h2>
-      <p class="reserve-subtext">Walk-ins welcome, but weekends move fast. Lock in a seat in seconds.</p>
+      <p class="reserve-subtext">Walk-ins welcome, but weekends move fast. Pick your favorite corner table in seconds.</p>
 
       <!-- Provider Grid -->
       <div class="providers-grid">
         
         <a href="https://www.zomato.com" target="_blank" rel="noopener" class="provider-card">
           <span class="provider-name">Zomato</span>
-          <span class="provider-action">Book →</span>
+          <span class="provider-action">Book Online →</span>
         </a>
 
         <a href="https://www.eazydiner.com" target="_blank" rel="noopener" class="provider-card">
           <span class="provider-name">EazyDiner</span>
-          <span class="provider-action">Book →</span>
+          <span class="provider-action">Book Online →</span>
         </a>
 
         <a href="https://www.district.in" target="_blank" rel="noopener" class="provider-card">
           <span class="provider-name">District</span>
-          <span class="provider-action">Book →</span>
+          <span class="provider-action">Book Online →</span>
         </a>
 
         <a href="https://www.swiggy.com/dineout" target="_blank" rel="noopener" class="provider-card">
           <span class="provider-name">Swiggy Dineout</span>
-          <span class="provider-action">Book →</span>
+          <span class="provider-action">Book Online →</span>
         </a>
 
       </div>
@@ -456,7 +1026,8 @@
       <!-- Direct Action Buttons -->
       <div class="reserve-direct-actions">
         <button class="btn-primary" id="open-modal-btn">
-          RESERVE A TABLE
+          <i class="fa-regular fa-calendar-check"></i>
+          INSTANT TABLE RESERVATION
         </button>
         <a href="tel:09908999643" class="btn-direct-call">
           OR CALL · 099089 99643
@@ -481,7 +1052,7 @@
             <div class="info-text">
               <span class="info-heading">ADDRESS</span>
               <p>Rénao — Café | Bistro<br>Silicon Valley, Madhapur<br>Hyderabad, Telangana 500081</p>
-              <a href="https://maps.google.com/?q=Rénao+Café+Bistro+Silicon+Valley+Madhapur+Hyderabad" target="_blank" rel="noopener" class="map-link">Open in Maps →</a>
+              <a href="https://maps.google.com/?q=Rénao+Café+Bistro+Silicon+Valley+Madhapur+Hyderabad" target="_blank" rel="noopener" class="map-link">Open in Google Maps →</a>
             </div>
           </div>
 
@@ -494,7 +1065,7 @@
 
           <div class="info-item">
             <div class="info-text">
-              <span class="info-heading">PRICE</span>
+              <span class="info-heading">AVERAGE PRICE</span>
               <p>₹400 — ₹1,400 per person</p>
             </div>
           </div>
@@ -521,7 +1092,6 @@
       <!-- Map Right -->
       <div class="map-wrap">
         <div class="map-container dark-map">
-          <!-- Inverted Google Maps iframe for dark luxury aesthetics -->
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2949767258957!2d78.3852!3d17.4478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9158f201b205%3A0x11aa503901a88b!2sSilicon%20Valley%2C%20Madhapur%2C%20Hyderabad%2C%20Telangana%20500081!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
             width="100%" 
@@ -546,37 +1116,166 @@
         <span class="logo-sub">— Café | Bistro</span>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 Rénao — Café | Bistro. Madhapur, Hyderabad.</p>
+        <p>© 2026 Rénao — Café | Bistro. Silicon Valley, Madhapur, Hyderabad.</p>
       </div>
     </div>
   </footer>
 
-  <!-- Instant Reservation Modal -->
+  <!-- Floating Order Tray Bar -->
+  <div class="floating-tray-bar" id="floating-tray-bar">
+    <button class="tray-capsule-btn" id="open-tray-drawer-btn" aria-label="Open Table Order Tray">
+      <div class="tray-bell-icon">
+        <i class="fa-solid fa-bell-concierge"></i>
+      </div>
+      <div class="tray-info-stack">
+        <span class="tray-count-label" id="tray-bar-count">0 ITEMS</span>
+        <span class="tray-total-price" id="tray-bar-price">₹0</span>
+      </div>
+      <div class="tray-view-action">
+        <span>VIEW TRAY & BILL</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+    </button>
+  </div>
+
+  <!-- Slide-Over Table Order Tray Drawer -->
+  <div class="drawer-backdrop" id="drawer-backdrop">
+    <div class="order-drawer" id="order-drawer">
+      <div class="drawer-header">
+        <div class="drawer-title-group">
+          <span class="micro-label" style="margin-bottom: 0.2rem;">TABLE ORDERING</span>
+          <h3>Your Table Tray</h3>
+          <p>Silicon Valley, Madhapur · Instant Waiter Ping</p>
+        </div>
+        <button class="drawer-close" id="close-drawer-btn" aria-label="Close tray">&times;</button>
+      </div>
+
+      <div class="drawer-body">
+        <!-- Table Picker -->
+        <div class="table-selector-card">
+          <label for="order-table-select">Select Your Table or Service</label>
+          <select id="order-table-select">
+            <option value="Table 1">Table #1 (Ground Salon)</option>
+            <option value="Table 2">Table #2 (Ground Salon)</option>
+            <option value="Table 3">Table #3 (Filament Booth)</option>
+            <option value="Table 4" selected>Table #4 (Filament Booth)</option>
+            <option value="Table 5">Table #5 (Terrace Garden)</option>
+            <option value="Table 6">Table #6 (Terrace Garden)</option>
+            <option value="Table 7">Table #7 (Bar Counter)</option>
+            <option value="Table 8">Table #8 (Bar Counter)</option>
+            <option value="Takeaway">Takeaway / Pick-up Counter</option>
+          </select>
+        </div>
+
+        <!-- Tray Items List -->
+        <div class="tray-items-list" id="tray-items-list">
+          <div class="tray-empty-placeholder" id="tray-empty-placeholder">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <p>Your order tray is currently empty.</p>
+            <span style="font-size: 0.75rem; color: var(--sepia-label);">Tap "+ ADD" on any dish or signature above to begin your feast.</span>
+          </div>
+        </div>
+
+        <!-- Kitchen Notes -->
+        <div class="form-group" id="kitchen-notes-wrap" style="display: none;">
+          <label for="kitchen-notes">Cooking / Serving Notes</label>
+          <textarea id="kitchen-notes" class="kitchen-notes-input" placeholder="e.g. Extra hot chocolate marshmallows, less spicy wings, serve together..."></textarea>
+        </div>
+
+        <!-- Chef Tip Selection -->
+        <div class="tip-selector-group" id="tip-selector-group" style="display: none;">
+          <span class="tip-label">Chef & Barista Appreciation Tip</span>
+          <div class="tip-buttons-row">
+            <button class="tip-btn active" data-tip="0">No Tip</button>
+            <button class="tip-btn" data-tip="50">₹50</button>
+            <button class="tip-btn" data-tip="100">₹100</button>
+            <button class="tip-btn" data-tip="150">₹150</button>
+          </div>
+        </div>
+
+        <!-- Bill Calculation Summary -->
+        <div class="bill-breakdown-card" id="bill-breakdown-card" style="display: none;">
+          <div class="bill-line">
+            <span>Items Subtotal</span>
+            <span id="bill-subtotal">₹0</span>
+          </div>
+          <div class="bill-line">
+            <span>GST & Service (5%)</span>
+            <span id="bill-tax">₹0</span>
+          </div>
+          <div class="bill-line">
+            <span>Staff Tip</span>
+            <span id="bill-tip">₹0</span>
+          </div>
+          <div class="bill-line total">
+            <span>Grand Total</span>
+            <span class="bill-total-price" id="bill-grand-total">₹0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="drawer-footer" id="drawer-footer" style="display: none;">
+        <button class="btn-whatsapp-order" id="send-whatsapp-order-btn">
+          <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i>
+          SEND ORDER TO WAITER VIA WHATSAPP
+        </button>
+        <div class="drawer-aux-buttons">
+          <button class="btn-copy-bill" id="copy-bill-btn">
+            <i class="fa-regular fa-copy"></i> Copy Bill Summary
+          </button>
+          <button class="btn-clear-tray" id="clear-tray-btn">
+            <i class="fa-regular fa-trash-can"></i> Clear Tray
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enhanced Instant Reservation Modal -->
   <div class="modal-backdrop" id="reservation-modal">
     <div class="modal-card">
-      <button class="modal-close" id="close-modal-btn">&times;</button>
+      <button class="modal-close" id="close-modal-btn" aria-label="Close modal">&times;</button>
+      
+      <!-- Modal Header -->
       <div class="modal-header">
-        <span class="micro-label">RESERVATION</span>
+        <span class="micro-label">TABLE RESERVATION</span>
         <h3 class="modal-title">Reserve a Table</h3>
         <p class="modal-subtext">Silicon Valley, Madhapur, Hyderabad</p>
       </div>
+
+      <!-- Booking Form -->
       <form id="booking-form" class="booking-form">
-        <div class="form-group">
-          <label for="guest-name">Name</label>
-          <input type="text" id="guest-name" required placeholder="Full Name">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="guest-name">Full Name</label>
+            <input type="text" id="guest-name" required placeholder="e.g. Srisurya Donga">
+          </div>
+          <div class="form-group">
+            <label for="guest-phone">Phone Number</label>
+            <input type="tel" id="guest-phone" required placeholder="099089 99643">
+          </div>
         </div>
         
         <div class="form-row">
           <div class="form-group">
-            <label for="guest-phone">Phone</label>
-            <input type="tel" id="guest-phone" required placeholder="099089 99643">
+            <label for="guest-count">Number of Guests</label>
+            <select id="guest-count" required>
+              <option value="1">1 Guest (Solo Coffee & Work)</option>
+              <option value="2">2 Guests (Couple / Intimate)</option>
+              <option value="4" selected>4 Guests (Friends & Family)</option>
+              <option value="6">6 Guests (Dinner Gathering)</option>
+              <option value="8">8 Guests (Celebration Party)</option>
+              <option value="10">10+ Guests (Large Event)</option>
+            </select>
           </div>
           <div class="form-group">
-            <label for="guest-count">Guests</label>
-            <select id="guest-count" required>
-              <option value="2">2 Guests</option>
-              <option value="4" selected>4 Guests</option>
-              <option value="6">6 Guests</option>
+            <label for="booking-occasion">Dining Occasion</label>
+            <select id="booking-occasion">
+              <option value="Casual Bistro Dining" selected>Casual Dining</option>
+              <option value="Romantic Date">Romantic Candlelight Date</option>
+              <option value="Birthday Celebration">Birthday Celebration</option>
+              <option value="Business Meeting">Business & Coffee Meeting</option>
+              <option value="Anniversary">Anniversary Dinner</option>
             </select>
           </div>
         </div>
@@ -587,26 +1286,117 @@
             <input type="date" id="booking-date" required>
           </div>
           <div class="form-group">
-            <label for="booking-time">Time</label>
+            <label for="booking-time">Time Slot</label>
             <select id="booking-time" required>
-              <option value="08:00 AM">08:00 AM</option>
-              <option value="01:30 PM">01:30 PM</option>
-              <option value="08:00 PM" selected>08:00 PM</option>
+              <option value="08:30 AM">08:30 AM — Slow Morning Coffee</option>
+              <option value="11:30 AM">11:30 AM — Bistro Brunch</option>
+              <option value="01:30 PM">01:30 PM — Afternoon Lunch</option>
+              <option value="05:00 PM">05:00 PM — Golden Hour & Sips</option>
+              <option value="07:30 PM">07:30 PM — Candlelight Dinner</option>
+              <option value="08:30 PM" selected>08:30 PM — Prime Evening</option>
+              <option value="10:30 PM">10:30 PM — Late Lit-up Bistro</option>
+              <option value="11:30 PM">11:30 PM — Midnight Sips</option>
             </select>
           </div>
         </div>
 
-        <button type="submit" class="btn-primary btn-block">CONFIRM RESERVATION</button>
+        <!-- Seating Zone Preference -->
+        <div class="form-group">
+          <label>Seating Zone Preference</label>
+          <div class="seating-options-grid">
+            <label class="seating-radio-label selected">
+              <input type="radio" name="seating-zone" value="Filament Corner Booth" checked>
+              <div class="seating-info">
+                <span class="seating-title">💡 Filament Booth</span>
+                <span class="seating-desc">Warm amber light, cozy corner</span>
+              </div>
+            </label>
+
+            <label class="seating-radio-label">
+              <input type="radio" name="seating-zone" value="Outdoor Terrace Garden">
+              <div class="seating-info">
+                <span class="seating-title">🌿 Terrace Garden</span>
+                <span class="seating-desc">Open-air breezy greenery</span>
+              </div>
+            </label>
+
+            <label class="seating-radio-label">
+              <input type="radio" name="seating-zone" value="Bar Counter">
+              <div class="seating-info">
+                <span class="seating-title">🍸 Bar Counter</span>
+                <span class="seating-desc">Live barista & drink craft view</span>
+              </div>
+            </label>
+
+            <label class="seating-radio-label">
+              <input type="radio" name="seating-zone" value="Main Salon">
+              <div class="seating-info">
+                <span class="seating-title">🍽️ Main Salon</span>
+                <span class="seating-desc">Spacious dining & acoustic stage</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="booking-special">Special Requests (Optional)</label>
+          <input type="text" id="booking-special" placeholder="e.g. Window side, quiet spot for laptop, birthday dessert candle...">
+        </div>
+
+        <button type="submit" class="btn-primary btn-block">CONFIRM & GENERATE DIGITAL PASS</button>
       </form>
 
-      <div class="booking-success" id="booking-success" style="display: none;">
-        <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
-        <h4>Reservation Requested!</h4>
-        <p>Our host at Rénao will call you shortly to confirm your table.</p>
-        <button class="btn-secondary" id="modal-done-btn">Close</button>
+      <!-- Digital Reservation Pass (Generated on submit) -->
+      <div class="booking-success" id="booking-success">
+        <div class="digital-pass-card" id="digital-pass-card">
+          <div class="pass-header">
+            <span class="pass-brand">Rénao — Café | Bistro</span>
+            <span class="pass-status-badge"><i class="fa-solid fa-check"></i> CONFIRMED</span>
+          </div>
+
+          <div class="pass-code-row">
+            <span class="pass-label">PASS CODE</span>
+            <div class="pass-code-val" id="pass-code-val">#RNO-8492</div>
+          </div>
+
+          <div class="pass-details-grid">
+            <div class="pass-detail-item">
+              <span class="pass-label">GUEST</span>
+              <span class="pass-val" id="pass-guest-name">Srisurya Donga</span>
+            </div>
+            <div class="pass-detail-item">
+              <span class="pass-label">PARTY</span>
+              <span class="pass-val" id="pass-guest-count">4 Guests</span>
+            </div>
+            <div class="pass-detail-item">
+              <span class="pass-label">DATE & TIME</span>
+              <span class="pass-val" id="pass-date-time">Today · 08:30 PM</span>
+            </div>
+            <div class="pass-detail-item">
+              <span class="pass-label">SEATING ZONE</span>
+              <span class="pass-val" id="pass-seating-zone">💡 Filament Corner Booth</span>
+            </div>
+          </div>
+
+          <div class="pass-footer-venue">
+            <i class="fa-solid fa-location-dot" style="color: var(--amber-gold);"></i>
+            <span>Silicon Valley, Madhapur, Hyderabad</span>
+          </div>
+        </div>
+
+        <div class="pass-actions">
+          <a href="#" id="pass-whatsapp-btn" target="_blank" rel="noopener" class="btn-whatsapp-confirm">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i>
+            SEND CONFIRMATION TO HOST VIA WHATSAPP
+          </a>
+          <button class="btn-secondary" id="modal-done-btn">Done</button>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
 
   <script src="script.js"></script>
 </body>
